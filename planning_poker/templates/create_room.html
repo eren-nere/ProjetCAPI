@@ -1,0 +1,6 @@
+<h1>Créer une salle</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="room_name" placeholder="Nom de la salle" required>
+    <button type="submit">Créer</button>
+</form>
