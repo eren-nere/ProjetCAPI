@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer une salle</title>
+    <title>Rejoindre la salle</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="card p-4 shadow-sm rounded">
-            <h1 class="text-center mb-4 text-primary">Créer une salle</h1>
+        <div class="card p-4 shadow-sm rounded" style="width: 100%; max-width: 400px;">
+            <h1 class="text-center text-primary mb-4">Rejoindre la salle : {{ room_name }}</h1>
 
             <form method="post">
                 {% csrf_token %}
-
-                <div class="form-group">
-                    <label for="room_name">Nom de la salle :</label>
-                    <input type="text" id="room_name" name="room_name" class="form-control" required>
-                </div>
 
                 <div class="form-group">
                     <label for="pseudo">Pseudo :</label>
                     <input type="text" id="pseudo" name="pseudo" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Créer la salle</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Rejoindre</button>
             </form>
 
             {% if error %}
