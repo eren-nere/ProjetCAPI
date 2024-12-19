@@ -107,7 +107,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">@brief Permet a un utilisateur de creer une room.
 
+@param request L'objet HTTP.
+
+@return Rend la template 'create_room.html' ou redirige vers la room.
+</pre> 
 </div>
 </div>
 <a id="a3f41842d24e582522cf91d0e59ea609d"></a>
@@ -135,7 +140,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<pre class="fragment">@brief Affiche le backlog final.
 
+@param request L'objet HTTP.
+
+@param room_name Le nom de la room.
+</pre> 
 </div>
 </div>
 <a id="a68ef8d8a34c34fd98a2ad9d7826c57c3"></a>
@@ -188,9 +198,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">@brief Permet a un utilisateur de rejoindre une room existante.
 
-@details Si un pseudo est fourni, il est enregistre dans la session. Sinon,
-un message derreur est affiche.
-
 @param request Lobjet HTTP request.
 @param room_name Le nom de la room a rejoindre.
 
@@ -224,9 +231,6 @@ un message derreur est affiche.
       </table>
 </div><div class="memdoc">
 <pre class="fragment">@brief Affiche la room.
-
-@details Cette vue affiche la room a l'utilisateur. Si le pseudo est pas dans la session 
-ou si la room nexiste pas, elle redirige vers la page de creation.
 
 @param request L'objet HTTP request.
 @param room_name est le nom de la room.
