@@ -7,6 +7,13 @@ from django.urls import reverse
 logger = logging.getLogger(__name__)
 
 def create_room(request):
+    """
+    @brief Permet a un utilisateur de creer une room.
+
+    @param request L'objet HTTP.
+
+    @return Rend la template 'create_room.html' ou redirige vers la room.
+    """
     if request.method == "POST":
         room_name = request.POST.get('room_name')
         pseudo = request.POST.get('pseudo')
@@ -62,9 +69,6 @@ def join_room(request, room_name):
     """
     @brief Permet a un utilisateur de rejoindre une room existante.
 
-    @details Si un pseudo est fourni, il est enregistre dans la session. Sinon,
-    un message derreur est affiche.
-
     @param request Lobjet HTTP request.
     @param room_name Le nom de la room a rejoindre.
 
@@ -84,9 +88,6 @@ def join_room(request, room_name):
 def room(request, room_name):
     """
     @brief Affiche la room.
-
-    @details Cette vue affiche la room a l'utilisateur. Si le pseudo est pas dans la session 
-    ou si la room nexiste pas, elle redirige vers la page de creation.
 
     @param request L'objet HTTP request.
     @param room_name est le nom de la room.
@@ -116,6 +117,13 @@ def room(request, room_name):
 
 
 def final_backlog_view(request, room_name):
+    """
+    @brief Affiche le backlog final.
+
+    @param request L'objet HTTP.
+
+    @param room_name Le nom de la room.
+    """
     #Recuperer la salle selon son nom
     poker_room = get_object_or_404(PokerRoom, name=room_name)
 
