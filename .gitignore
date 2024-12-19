@@ -10,3 +10,5 @@ __pycache__/
 .vscode/
 # db sql
 *.sqlite3
+# les fichiers de mac
+.DS_Store
