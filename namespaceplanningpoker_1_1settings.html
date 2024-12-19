@@ -114,6 +114,8 @@ Variables</h2></td></tr>
 <tr class="separator:a376efcfeb5bf419d92be9708e522b472"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8da5e466ede858c9dd8f05b1e711320f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanningpoker_1_1settings.html#a8da5e466ede858c9dd8f05b1e711320f">ASGI_APPLICATION</a> = '<a class="el" href="namespaceplanningpoker_1_1asgi.html#a1fda35cc13a373a0540021825d5f494e">planningpoker.asgi.application</a>'</td></tr>
 <tr class="separator:a8da5e466ede858c9dd8f05b1e711320f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690512335183853836d9ef0aacf00a3b"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanningpoker_1_1settings.html#a690512335183853836d9ef0aacf00a3b">CHANNEL_LAYERS</a></td></tr>
+<tr class="separator:a690512335183853836d9ef0aacf00a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Django settings for planningpoker project.
@@ -196,6 +198,25 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 </div>
 </div>
+<a id="a690512335183853836d9ef0aacf00a3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690512335183853836d9ef0aacf00a3b">&#9670;&nbsp;</a></span>CHANNEL_LAYERS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary planningpoker.settings.CHANNEL_LAYERS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  {</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;        <span class="stringliteral">&quot;default&quot;</span>: {</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;            <span class="stringliteral">&quot;BACKEND&quot;</span>: <span class="stringliteral">&quot;channels.layers.InMemoryChannelLayer&quot;</span>,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;        },</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aaa772891aa33475720bac2ea9b12ef56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa772891aa33475720bac2ea9b12ef56">&#9670;&nbsp;</a></span>DATABASES</h2>
 
@@ -256,15 +277,16 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  [</div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    <span class="stringliteral">&#39;django.contrib.admin&#39;</span>,</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    <span class="stringliteral">&#39;django.contrib.auth&#39;</span>,</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="stringliteral">&#39;django.contrib.contenttypes&#39;</span>,</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="stringliteral">&#39;django.contrib.sessions&#39;</span>,</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="stringliteral">&#39;django.contrib.messages&#39;</span>,</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="stringliteral">&#39;django.contrib.staticfiles&#39;</span>,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="stringliteral">&#39;channels&#39;</span>,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="stringliteral">&#39;planning_poker&#39;</span>,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;]</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    <span class="stringliteral">&#39;daphne&#39;</span>,</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    <span class="stringliteral">&#39;django.contrib.admin&#39;</span>,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="stringliteral">&#39;django.contrib.auth&#39;</span>,</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="stringliteral">&#39;django.contrib.contenttypes&#39;</span>,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="stringliteral">&#39;django.contrib.sessions&#39;</span>,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="stringliteral">&#39;django.contrib.messages&#39;</span>,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="stringliteral">&#39;django.contrib.staticfiles&#39;</span>,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="stringliteral">&#39;channels&#39;</span>,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="stringliteral">&#39;planning_poker&#39;</span>,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;]</div>
 </div><!-- fragment -->
 </div>
 </div>

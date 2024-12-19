@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wsgi_2epy_152',['wsgi.py',['../wsgi_8py.html',1,'']]]
+  ['views_2epy_170',['views.py',['../views_8py.html',1,'']]]
 ];
