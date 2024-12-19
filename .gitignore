@@ -1,0 +1,12 @@
+# tous les venvs
+venv/
+# les fichiers de cache de python
+__pycache__/
+# les fichiers de cache de pytest
+.pytest_cache/
+# idea et les fichiers de cache de pycharm
+.idea/
+# les fichiers de cache de vscode
+.vscode/
+# db sql
+*.sqlite3
