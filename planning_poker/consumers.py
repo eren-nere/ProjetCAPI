@@ -15,6 +15,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @brief Connexion au websocket.
 
         @param self: Instance de la classe.
+
+        @return Rien.
         """
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f"poker_{self.room_name}"
@@ -70,6 +72,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param close_code: Code de fermeture.
+
+        @return Rien.
         """
         await self.channel_layer.group_discard(
             self.room_group_name,
@@ -84,6 +88,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param text_data: Données textuelles.
+
+        @return Rien.
         """
         data = json.loads(text_data)
         if data['type'] == 'vote':
@@ -103,6 +109,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param data: Données du vote.
+
+        @return Rien.
         """
         player = await sync_to_async(Player.objects.get)(room=self.room, name=data["player"])
         print(f"DEBUG: Avant mise à jour, vote pour {player.name} = {player.vote}")
@@ -137,6 +145,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param event: Événement.
+
+        @return Rien.
         """
         players = await sync_to_async(list)(Player.objects.filter(room=self.room))
         votes = [{"name": player.name, "vote": str(player.vote).strip()} for player in players]
@@ -217,6 +227,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @brief Démarre le vote pour la première fonctionnalité du backlog.
 
         @param self: Instance de la classe.
+
+        @return Rien.
         """
         backlog = json.loads(self.room.backlog)
         if backlog:
@@ -240,6 +252,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
         
         @param event: Événement.
+
+        @return Rien.
         """
         await self.send(text_data=json.dumps({
             "type": "vote",
@@ -256,6 +270,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param event: Événement.
+
+        @return Rien.
         """
         await self.send(text_data=json.dumps(event))
 
@@ -266,6 +282,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param event: Événement.
+
+        @return Rien.
         """
         await self.send(text_data=json.dumps({
             "type": "feature_update",
@@ -279,6 +297,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @brief Réinitialise les votes de tous les joueurs.
 
         @param self: Instance de la classe.
+
+        @return Rien.
         """
         players = await sync_to_async(list)(Player.objects.filter(room=self.room))
         for player in players:
@@ -291,6 +311,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @brief Récupère les joueurs qui n'ont pas encore voté.
 
         @param self: Instance de la classe.
+
+        @return Liste des joueurs sans vote.
         """
         players = await sync_to_async(list)(Player.objects.filter(room=self.room))
         print(f"DEBUG: Votes actuels des joueurs : {[{'name': p.name, 'vote': p.vote} for p in players]}")
@@ -303,6 +325,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param event: Événement.
+
+        @return Rien.
         """
         if event.get("url"):
             await self.send(text_data=json.dumps({
@@ -325,6 +349,8 @@ class PokerConsumer(AsyncWebsocketConsumer):
         @param self: Instance de la classe.
 
         @param event: Événement.
+
+        @return Rien.
         """
         print("DEBUG: Révélation des votes.")
         print(event)
