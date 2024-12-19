@@ -66,6 +66,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classplanning__poker_1_1models_1_1PokerRoom-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -79,6 +80,11 @@ Inheritance diagram for planning_poker.models.PokerRoom:</div>
   <img src="classplanning__poker_1_1models_1_1PokerRoom.png" alt=""/>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aeee2258cd5dd14fa683b359b5a43011c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#aeee2258cd5dd14fa683b359b5a43011c">save</a> (self, *args, **kwargs)</td></tr>
+<tr class="separator:aeee2258cd5dd14fa683b359b5a43011c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a32ef227b95ce908228face367e828230"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#a32ef227b95ce908228face367e828230">name</a> = models.CharField(max_length=50, unique=True)</td></tr>
@@ -87,13 +93,93 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:a1b65beb8458beb340c29400d923aadbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad889fe6360c11ca65b12ef515b495e6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#ad889fe6360c11ca65b12ef515b495e6c">created_at</a> = models.DateTimeField(auto_now_add=True)</td></tr>
 <tr class="separator:ad889fe6360c11ca65b12ef515b495e6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ea13d7e0837ba3a69b868d81646ce39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#a8ea13d7e0837ba3a69b868d81646ce39">mode</a> = models.CharField(max_length=20, choices=[('unanimity', 'Unanimité'), ('absolute_majority', 'Majorité absolue')], default='unanimity')</td></tr>
+<tr class="separator:a8ea13d7e0837ba3a69b868d81646ce39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7190dc17e626bcfa81b9ec58c92a5d46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#a7190dc17e626bcfa81b9ec58c92a5d46">backlog</a> = models.TextField()</td></tr>
+<tr class="separator:a7190dc17e626bcfa81b9ec58c92a5d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce9b0052f795fd1d62d181da616d78f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplanning__poker_1_1models_1_1PokerRoom.html#a8ce9b0052f795fd1d62d181da616d78f">all_features</a> = models.TextField(default=&quot;[]&quot;)</td></tr>
+<tr class="separator:a8ce9b0052f795fd1d62d181da616d78f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">@brief Modèle représentant une room.
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aeee2258cd5dd14fa683b359b5a43011c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeee2258cd5dd14fa683b359b5a43011c">&#9670;&nbsp;</a></span>save()</h2>
 
-@details Une room contient un nom unique, un créateur, et une date de création.
-Elle est associée à plusieurs joueurs via le modèle Player.
-</pre> </div><h2 class="groupheader">Member Data Documentation</h2>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def planning_poker.models.PokerRoom.save </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">*&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">**&#160;</td>
+          <td class="paramname"><em>kwargs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8ce9b0052f795fd1d62d181da616d78f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce9b0052f795fd1d62d181da616d78f">&#9670;&nbsp;</a></span>all_features</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.models.PokerRoom.all_features = models.TextField(default=&quot;[]&quot;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7190dc17e626bcfa81b9ec58c92a5d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7190dc17e626bcfa81b9ec58c92a5d46">&#9670;&nbsp;</a></span>backlog</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.models.PokerRoom.backlog = models.TextField()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ad889fe6360c11ca65b12ef515b495e6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad889fe6360c11ca65b12ef515b495e6c">&#9670;&nbsp;</a></span>created_at</h2>
 
@@ -127,6 +213,28 @@ Elle est associée à plusieurs joueurs via le modèle Player.
       <table class="memname">
         <tr>
           <td class="memname">planning_poker.models.PokerRoom.creator = models.CharField(max_length=50)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ea13d7e0837ba3a69b868d81646ce39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ea13d7e0837ba3a69b868d81646ce39">&#9670;&nbsp;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.models.PokerRoom.mode = models.CharField(max_length=20, choices=[('unanimity', 'Unanimité'), ('absolute_majority', 'Majorité absolue')], default='unanimity')</td>
         </tr>
       </table>
   </td>

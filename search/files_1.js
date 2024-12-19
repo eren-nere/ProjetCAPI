@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['admin_2epy_101',['admin.py',['../admin_8py.html',1,'']]],
-  ['apps_2epy_102',['apps.py',['../apps_8py.html',1,'']]],
-  ['asgi_2epy_103',['asgi.py',['../asgi_8py.html',1,'']]]
+  ['_5f_5finit_5f_5f_2epy_140',['__init__.py',['../planning__poker_2____init_____8py.html',1,'(Global Namespace)'],['../planning__poker_2management_2____init_____8py.html',1,'(Global Namespace)'],['../planning__poker_2management_2commands_2____init_____8py.html',1,'(Global Namespace)'],['../planning__poker_2migrations_2____init_____8py.html',1,'(Global Namespace)'],['../planningpoker_2____init_____8py.html',1,'(Global Namespace)']]]
 ];

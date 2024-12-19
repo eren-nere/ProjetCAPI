@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['websocket_5furlpatterns_157',['websocket_urlpatterns',['../namespaceplanning__poker_1_1routing.html#a88a0af0920cc6141e2e0c720f5a468fd',1,'planning_poker::routing']]],
-  ['wsgi_5fapplication_158',['WSGI_APPLICATION',['../namespaceplanningpoker_1_1settings.html#a75abf96ca79141117bc954062b562828',1,'planningpoker::settings']]]
+  ['use_5fi18n_196',['USE_I18N',['../namespaceplanningpoker_1_1settings.html#a8c1891fe7d5c3d4e6e5e1aae114afe0b',1,'planningpoker::settings']]],
+  ['use_5ftz_197',['USE_TZ',['../namespaceplanningpoker_1_1settings.html#a9c646d75ba2bae06a35959290c80c907',1,'planningpoker::settings']]]
 ];

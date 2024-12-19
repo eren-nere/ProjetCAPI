@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installed_5fapps_21',['INSTALLED_APPS',['../namespaceplanningpoker_1_1settings.html#a42441850173f12ee4cc0fab00089b065',1,'planningpoker::settings']]]
+  ['final_5fbacklog_5fview_31',['final_backlog_view',['../namespaceplanning__poker_1_1views.html#a3f41842d24e582522cf91d0e59ea609d',1,'planning_poker::views']]]
 ];

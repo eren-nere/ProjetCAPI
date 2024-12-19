@@ -75,14 +75,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a68ef8d8a34c34fd98a2ad9d7826c57c3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#a68ef8d8a34c34fd98a2ad9d7826c57c3">home</a> (request)</td></tr>
-<tr class="separator:a68ef8d8a34c34fd98a2ad9d7826c57c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3619ae6d5571065010d75026a1fe273e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#a3619ae6d5571065010d75026a1fe273e">create_room</a> (request)</td></tr>
 <tr class="separator:a3619ae6d5571065010d75026a1fe273e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ef8d8a34c34fd98a2ad9d7826c57c3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#a68ef8d8a34c34fd98a2ad9d7826c57c3">home</a> (request)</td></tr>
+<tr class="separator:a68ef8d8a34c34fd98a2ad9d7826c57c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d4f9ac2b5a52c7a03f29786057f47b9"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#a6d4f9ac2b5a52c7a03f29786057f47b9">join_room</a> (request, room_name)</td></tr>
 <tr class="separator:a6d4f9ac2b5a52c7a03f29786057f47b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0d991c0a645aceca6f59c006e07ed6f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#ac0d991c0a645aceca6f59c006e07ed6f">room</a> (request, room_name)</td></tr>
 <tr class="separator:ac0d991c0a645aceca6f59c006e07ed6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f41842d24e582522cf91d0e59ea609d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceplanning__poker_1_1views.html#a3f41842d24e582522cf91d0e59ea609d">final_backlog_view</a> (request, room_name)</td></tr>
+<tr class="separator:a3f41842d24e582522cf91d0e59ea609d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -105,15 +107,35 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Gère la création d'une room.
 
-@details Cette fonction permet à un utilisateur de créer une nouvelle room ou
-de rejoindre une room existante. Elle enregistre le pseudo de l'utilisateur dans la session.
+</div>
+</div>
+<a id="a3f41842d24e582522cf91d0e59ea609d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f41842d24e582522cf91d0e59ea609d">&#9670;&nbsp;</a></span>final_backlog_view()</h2>
 
-@param request L'objet HTTP request.
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def planning_poker.views.final_backlog_view </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>room_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
-@return Rend le template 'create_room.html' ou redirige vers la room créée.
-</pre> 
 </div>
 </div>
 <a id="a68ef8d8a34c34fd98a2ad9d7826c57c3"></a>
@@ -133,9 +155,9 @@ de rejoindre une room existante. Elle enregistre le pseudo de l'utilisateur dans
 </div><div class="memdoc">
 <pre class="fragment">@brief Affiche la page d'accueil.
 
-@param request L'objet HTTP request.
+@param request Lobjet HTTP request.
 
-@return Rend le template 'home.html'.
+@return Rend la template 'home.html'.
 </pre> 
 </div>
 </div>
@@ -164,15 +186,15 @@ de rejoindre une room existante. Elle enregistre le pseudo de l'utilisateur dans
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Permet à un utilisateur de rejoindre une room existante.
+<pre class="fragment">@brief Permet a un utilisateur de rejoindre une room existante.
 
-@details Si un pseudo est fourni, il est enregistré dans la session. Sinon,
-un message d'erreur est affiché.
+@details Si un pseudo est fourni, il est enregistre dans la session. Sinon,
+un message derreur est affiche.
 
-@param request L'objet HTTP request.
-@param room_name Le nom de la room à rejoindre.
+@param request Lobjet HTTP request.
+@param room_name Le nom de la room a rejoindre.
 
-@return Rend le template 'join_room.html' ou redirige vers la room.
+@return Rend la template 'join_room.html' ou redirige vers la room.
 </pre> 
 </div>
 </div>
@@ -203,13 +225,14 @@ un message d'erreur est affiché.
 </div><div class="memdoc">
 <pre class="fragment">@brief Affiche la room.
 
-@details Cette vue affiche la room à l'utilisateur. Si le pseudo n'est pas dans la session
-ou si la room n'existe pas, elle redirige vers la page de création.
+@details Cette vue affiche la room a l'utilisateur. Si le pseudo est pas dans la session 
+ou si la room nexiste pas, elle redirige vers la page de creation.
 
 @param request L'objet HTTP request.
-@param room_name Le nom de la room.
+@param room_name est le nom de la room.
 
-@return Rend le template 'room.html'.
+
+@return Rend la template 'room.html'.
 </pre> 
 </div>
 </div>

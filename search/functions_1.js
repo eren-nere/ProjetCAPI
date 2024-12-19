@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['connect_114',['connect',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#aeb116c284b4198a35143ef2306b8893c',1,'planning_poker::consumers::PokerConsumer']]],
-  ['create_5froom_115',['create_room',['../namespaceplanning__poker_1_1views.html#a3619ae6d5571065010d75026a1fe273e',1,'planning_poker::views']]]
+  ['final_5fbacklog_5fview_155',['final_backlog_view',['../namespaceplanning__poker_1_1views.html#a3f41842d24e582522cf91d0e59ea609d',1,'planning_poker::views']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_30',['name',['../classplanning__poker_1_1apps_1_1PlanningPokerConfig.html#ac2f4f7898d2786f248e9a46265b3a391',1,'planning_poker.apps.PlanningPokerConfig.name()'],['../classplanning__poker_1_1models_1_1PokerRoom.html#a32ef227b95ce908228face367e828230',1,'planning_poker.models.PokerRoom.name()'],['../classplanning__poker_1_1models_1_1Player.html#a11b1ddeb3bee721564dd35e2a3b4e530',1,'planning_poker.models.Player.name()']]]
+  ['language_5fcode_38',['LANGUAGE_CODE',['../namespaceplanningpoker_1_1settings.html#a7ed70938839ebac9629360e7f1282872',1,'planningpoker::settings']]],
+  ['logger_39',['logger',['../namespaceplanning__poker_1_1views.html#a91c5606fd961a532b52784284c2ef56d',1,'planning_poker::views']]]
 ];

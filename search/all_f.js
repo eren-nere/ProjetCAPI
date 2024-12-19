@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['urlpatterns_70',['urlpatterns',['../namespaceplanning__poker_1_1urls.html#a09a5077ea45e9dd1aabaacf181293f8e',1,'planning_poker::urls']]],
-  ['urls_2epy_71',['urls.py',['../planning__poker_2urls_8py.html',1,'(Global Namespace)'],['../planningpoker_2urls_8py.html',1,'(Global Namespace)']]],
-  ['use_5fi18n_72',['USE_I18N',['../namespaceplanningpoker_1_1settings.html#a8c1891fe7d5c3d4e6e5e1aae114afe0b',1,'planningpoker::settings']]],
-  ['use_5ftz_73',['USE_TZ',['../namespaceplanningpoker_1_1settings.html#a9c646d75ba2bae06a35959290c80c907',1,'planningpoker::settings']]]
+  ['room_78',['room',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a892596912f0763f036eda4a873e80589',1,'planning_poker.consumers.PokerConsumer.room()'],['../classplanning__poker_1_1models_1_1Player.html#a966d2de0e1561d3c37a99be3d5763ca4',1,'planning_poker.models.Player.room()'],['../namespaceplanning__poker_1_1views.html#ac0d991c0a645aceca6f59c006e07ed6f',1,'planning_poker.views.room()']]],
+  ['room_5fgroup_5fname_79',['room_group_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a345013d38c16009be2095b73e898519c',1,'planning_poker::consumers::PokerConsumer']]],
+  ['room_5fname_80',['room_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#ac524a03fbc92a45a79ab498201a9069d',1,'planning_poker::consumers::PokerConsumer']]],
+  ['root_5furlconf_81',['ROOT_URLCONF',['../namespaceplanningpoker_1_1settings.html#a1c434d49392622d878aded4ad980a077',1,'planningpoker::settings']]],
+  ['routing_2epy_82',['routing.py',['../routing_8py.html',1,'']]],
+  ['runasgi_2epy_83',['runasgi.py',['../runasgi_8py.html',1,'']]]
 ];

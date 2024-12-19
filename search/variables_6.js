@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['middleware_140',['MIDDLEWARE',['../namespaceplanningpoker_1_1settings.html#a86f18d0753bda12001653e314726ce0b',1,'planningpoker::settings']]]
+  ['language_5fcode_179',['LANGUAGE_CODE',['../namespaceplanningpoker_1_1settings.html#a7ed70938839ebac9629360e7f1282872',1,'planningpoker::settings']]],
+  ['logger_180',['logger',['../namespaceplanning__poker_1_1views.html#a91c5606fd961a532b52784284c2ef56d',1,'planning_poker::views']]]
 ];
