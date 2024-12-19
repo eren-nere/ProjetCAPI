@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['channel_5flayers_191',['CHANNEL_LAYERS',['../namespaceplanningpoker_1_1settings.html#a690512335183853836d9ef0aacf00a3b',1,'planningpoker::settings']]],
-  ['created_5fat_192',['created_at',['../classplanning__poker_1_1models_1_1PokerRoom.html#ad889fe6360c11ca65b12ef515b495e6c',1,'planning_poker::models::PokerRoom']]],
-  ['creator_193',['creator',['../classplanning__poker_1_1models_1_1PokerRoom.html#a1b65beb8458beb340c29400d923aadbf',1,'planning_poker::models::PokerRoom']]]
+  ['backlog_0',['backlog',['../classplanning__poker_1_1models_1_1PokerRoom.html#a7190dc17e626bcfa81b9ec58c92a5d46',1,'planning_poker::models::PokerRoom']]],
+  ['base_5fdir_1',['BASE_DIR',['../namespaceplanningpoker_1_1settings.html#aa84844a02341200b25730544e893908c',1,'planningpoker::settings']]]
 ];

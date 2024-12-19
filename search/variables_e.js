@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['use_5fi18n_220',['USE_I18N',['../namespaceplanningpoker_1_1settings.html#a8c1891fe7d5c3d4e6e5e1aae114afe0b',1,'planningpoker::settings']]],
-  ['use_5ftz_221',['USE_TZ',['../namespaceplanningpoker_1_1settings.html#a9c646d75ba2bae06a35959290c80c907',1,'planningpoker::settings']]]
+  ['templates_0',['TEMPLATES',['../namespaceplanningpoker_1_1settings.html#a721e554b4015de5defea3128c31bdeb2',1,'planningpoker::settings']]],
+  ['time_5fzone_1',['TIME_ZONE',['../namespaceplanningpoker_1_1settings.html#a3cb2c3bdd3fc80c1811596c4506d73a9',1,'planningpoker::settings']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['language_5fcode_39',['LANGUAGE_CODE',['../namespaceplanningpoker_1_1settings.html#a7ed70938839ebac9629360e7f1282872',1,'planningpoker::settings']]],
-  ['logger_40',['logger',['../namespaceplanning__poker_1_1views.html#a91c5606fd961a532b52784284c2ef56d',1,'planning_poker::views']]]
+  ['join_5froom_0',['join_room',['../namespaceplanning__poker_1_1views.html#a0a1767688901195e9b1b59c3ae8df9dc',1,'planning_poker::views']]]
 ];

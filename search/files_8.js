@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['urls_2epy_169',['urls.py',['../planning__poker_2urls_8py.html',1,'(Global Namespace)'],['../planningpoker_2urls_8py.html',1,'(Global Namespace)']]]
+  ['settings_2epy_0',['settings.py',['../settings_8py.html',1,'']]],
+  ['strip_5fexample_2epy_1',['strip_example.py',['../strip__example_8py.html',1,'']]]
 ];

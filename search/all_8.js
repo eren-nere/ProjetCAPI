@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['initial_36',['initial',['../classplanning__poker_1_1migrations_1_10001__initial_1_1Migration.html#a30d1f96fdebcab1cfd583ca9d54edfb5',1,'planning_poker::migrations::0001_initial::Migration']]],
-  ['installed_5fapps_37',['INSTALLED_APPS',['../namespaceplanningpoker_1_1settings.html#a42441850173f12ee4cc0fab00089b065',1,'planningpoker::settings']]]
+  ['handle_0',['handle',['../classplanning__poker_1_1management_1_1commands_1_1runasgi_1_1Command.html#a37d621a7e6720b105f1953823007bd5f',1,'planning_poker::management::commands::runasgi::Command']]],
+  ['handle_5fvote_1',['handle_vote',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a639b31b37ed2a3b74058ade7c0dccbcf',1,'planning_poker::consumers::PokerConsumer']]],
+  ['help_2',['help',['../classplanning__poker_1_1management_1_1commands_1_1runasgi_1_1Command.html#a8b9a07c0b52be7fcbb395722c543687e',1,'planning_poker::management::commands::runasgi::Command']]],
+  ['home_3',['home',['../namespaceplanning__poker_1_1views.html#a1d8d2b35e1a97d3c2310d0b5d5e6fac7',1,'planning_poker::views']]]
 ];

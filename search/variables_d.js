@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['templates_218',['TEMPLATES',['../namespaceplanningpoker_1_1settings.html#a721e554b4015de5defea3128c31bdeb2',1,'planningpoker::settings']]],
-  ['time_5fzone_219',['TIME_ZONE',['../namespaceplanningpoker_1_1settings.html#a1f7b55ce260c71105b7c4b9039d224bd',1,'planningpoker::settings']]]
+  ['secret_5fkey_0',['SECRET_KEY',['../namespaceplanningpoker_1_1settings.html#a5eb979b059affae8e8ca7e32eb0d4806',1,'planningpoker::settings']]],
+  ['static_5froot_1',['STATIC_ROOT',['../namespaceplanningpoker_1_1settings.html#a76ffa8872b1bcb9f58fbd4cf697d5458',1,'planningpoker::settings']]],
+  ['static_5furl_2',['STATIC_URL',['../namespaceplanningpoker_1_1settings.html#ae89ede8cf56fbf72357a2162e9e9df30',1,'planningpoker::settings']]],
+  ['staticfiles_5fdirs_3',['STATICFILES_DIRS',['../namespaceplanningpoker_1_1settings.html#aa991edbf62250bfaeef5f32579942b18',1,'planningpoker::settings']]]
 ];

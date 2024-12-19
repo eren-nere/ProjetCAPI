@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['secret_5fkey_214',['SECRET_KEY',['../namespaceplanningpoker_1_1settings.html#aa6f70e33545dff4e99ec6bec4c159f60',1,'planningpoker::settings']]],
-  ['static_5froot_215',['STATIC_ROOT',['../namespaceplanningpoker_1_1settings.html#a4d1d4b8bf4f9718db7fd73f99c6eeff0',1,'planningpoker::settings']]],
-  ['static_5furl_216',['STATIC_URL',['../namespaceplanningpoker_1_1settings.html#ad9e4fd724fa986eaf1d4ede95666f875',1,'planningpoker::settings']]],
-  ['staticfiles_5fdirs_217',['STATICFILES_DIRS',['../namespaceplanningpoker_1_1settings.html#aa991edbf62250bfaeef5f32579942b18',1,'planningpoker::settings']]]
+  ['room_0',['room',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a892596912f0763f036eda4a873e80589',1,'planning_poker.consumers.PokerConsumer.room'],['../classplanning__poker_1_1models_1_1Player.html#a966d2de0e1561d3c37a99be3d5763ca4',1,'planning_poker.models.Player.room'],['../classplanning__poker_1_1tests_1_1test__consumers_1_1PokerConsumerTestCase.html#ab6febda174a530c43230a584a478c77f',1,'planning_poker.tests.test_consumers.PokerConsumerTestCase.room']]],
+  ['room_5fgroup_5fname_1',['room_group_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a345013d38c16009be2095b73e898519c',1,'planning_poker::consumers::PokerConsumer']]],
+  ['room_5fname_2',['room_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#ac524a03fbc92a45a79ab498201a9069d',1,'planning_poker::consumers::PokerConsumer']]],
+  ['root_5furlconf_3',['ROOT_URLCONF',['../namespaceplanningpoker_1_1settings.html#ae734cd239c571cf12f081c9243477204',1,'planningpoker::settings']]]
 ];
