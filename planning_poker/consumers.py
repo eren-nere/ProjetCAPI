@@ -12,7 +12,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
     """
     async def connect(self):
         """
-        Connexion au websocket.
+        @brief Connexion au websocket.
 
         @param self: Instance de la classe.
         """
@@ -65,7 +65,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         """
-        Déconnexion du websocket.
+        @brief Déconnexion du websocket.
 
         @param self: Instance de la classe.
 
@@ -79,7 +79,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         """
-        Réception de données.
+        @brief Réception de données.
 
         @param self: Instance de la classe.
 
@@ -98,7 +98,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def handle_vote(self, data):
         """
-        Gère le vote d'un joueur et vérifie si tous ont voté.
+        @brief Gère le vote d'un joueur et vérifie si tous ont voté.
 
         @param self: Instance de la classe.
 
@@ -132,7 +132,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def reveal_votes(self, event=None):
         """
-        Révèle les votes des joueurs et détermine si l'unanimité est atteinte.
+        @brief Révèle les votes des joueurs et détermine si l'unanimité est atteinte.
 
         @param self: Instance de la classe.
 
@@ -214,7 +214,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def start_feature_voting(self):
         """
-        Démarre le vote pour la première fonctionnalité du backlog.
+        @brief Démarre le vote pour la première fonctionnalité du backlog.
 
         @param self: Instance de la classe.
         """
@@ -235,7 +235,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def player_vote(self, event):
         """
-        Envoie le vote d'un joueur à tous les joueurs.
+        @brief Envoie le vote d'un joueur à tous les joueurs.
         
         @param self: Instance de la classe.
         
@@ -251,7 +251,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def not_voted_update(self, event):
         """
-        Met à jour la liste des joueurs sans vote.
+        @brief Met à jour la liste des joueurs sans vote.
 
         @param self: Instance de la classe.
 
@@ -261,7 +261,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def feature_update(self, event):
         """
-        Envoie une nouvelle fonctionnalité à tous les joueurs.
+        @brief Envoie une nouvelle fonctionnalité à tous les joueurs.
 
         @param self: Instance de la classe.
 
@@ -276,7 +276,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def reset_votes(self):
         """
-        Réinitialise les votes de tous les joueurs.
+        @brief Réinitialise les votes de tous les joueurs.
 
         @param self: Instance de la classe.
         """
@@ -288,7 +288,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def get_not_voted_players(self):
         """
-        Récupère les joueurs qui n'ont pas encore voté.
+        @brief Récupère les joueurs qui n'ont pas encore voté.
 
         @param self: Instance de la classe.
         """
@@ -298,7 +298,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def final_backlog(self, event):
         """
-        Envoie le backlog final avec toutes les fonctionnalités et leurs priorités.
+        @brief Envoie le backlog final avec toutes les fonctionnalités et leurs priorités.
 
         @param self: Instance de la classe.
 
@@ -320,7 +320,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     async def reveal(self, event):
         """
-        Révèle les votes des joueurs.
+        @brief Révèle les votes des joueurs.
 
         @param self: Instance de la classe.
 
