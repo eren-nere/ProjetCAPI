@@ -9,45 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const creator = userInfoElement.getAttribute('data-creator');
 
     const revealButton = document.getElementById('reveal');
-    const notVotedList = document.getElementById('not-voted-list');
+    const notVotedList = document.getElementById('not-voted-list'); 
+    const featureContainer = document.getElementById('feature-container'); 
+    const currentFeature = document.getElementById('current-feature'); 
+    const resetButton = document.getElementById('reset'); 
 
     if (pseudo === creator && revealButton) {
         revealButton.style.display = 'block';
         revealButton.disabled = true;
         revealButton.classList.add('btn-secondary');
     }
-
-    ws.onopen = () => {
-        console.log("Websocket connecté");
-    };
-
-    ws.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-
-        if (data.type === "vote") {
-            console.log(`EVENT : ${data.player} a voté ${data.vote}`);
-            updateNotVotedList(data.not_voted);
-
-            if (data.all_voted && pseudo === creator && revealButton) {
-                revealButton.disabled = false;
-                revealButton.classList.remove('btn-secondary');
-                revealButton.classList.add('btn-danger');
-            }
-        } else if (data.type === "reveal") {
-            displayVotes(data.votes);
-            hideVoteSelection();
-            clearNotVotedList();
-        } else if (data.type === "not_voted_update") {
-            updateNotVotedList(data.not_voted);
-        } else if (data.type === "error") {
-            alert(data.message);
-        }
-    };
-
-    ws.onclose = () => {
-        console.log("Websocket déconnecté");
-    };
-
     if (revealButton) {
         revealButton.addEventListener('click', () => {
             if (ws) {
@@ -59,6 +30,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    ws.onopen = () => {
+        console.log("Websocket connecté");
+    };
+
+ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    console.log("Message reçu :", data);
+
+    switch (data.type) {
+        case "vote":
+            console.log(`EVENT : ${data.player} a voté ${data.vote}`);
+            updateNotVotedList(data.not_voted);
+
+            if (data.all_voted && pseudo === creator && revealButton) {
+                revealButton.disabled = false;
+                revealButton.classList.remove('btn-secondary');
+                revealButton.classList.add('btn-danger');
+            }
+            break;
+
+        case "reveal":
+            console.log("Votes reçus :", data.votes);
+            displayVotes(data.votes);
+            if (data.unanimity) {
+                console.log("✅ Unanimité détectée. Passage à la prochaine fonctionnalité.");
+                alert("✅ Vote validé ! Passage à la prochaine fonctionnalité...");
+                hideVoteSelection();
+                clearNotVotedList();
+                loadNextFeature(data.feature);
+
+            } else {
+                console.log("❌ Pas d'unanimité. Recommencer le vote.");
+                alert("❌ Vote non unanime... On revote pour cette fonctionnalité.");
+                restartVoteUI();
+            }
+            break;
+
+        case "not_voted_update":
+            updateNotVotedList(data.not_voted);
+            break;
+
+        case "feature_update":
+            console.log("Feature en cours :", data.feature);
+            loadNextFeature(data.feature);
+            break;
+
+        case "final_backlog":
+            alert("🎉 Toutes les fonctionnalités ont été votées !");
+            console.log("Final backlog : ", data.final_backlog);
+            window.location.href = data.url;
+            break;
+
+        case "error":
+            alert(`⚠️ Erreur : ${data.message}`);
+            break;
+
+        default:
+            console.error(`Type d'événement inconnu : ${data.type}`);
+            break;
+    }
+};
+
+
+
+
+
+    ws.onclose = () => {
+        console.log("Websocket déconnecté");
+    };
+
 });
 
 function sendVote(player, vote) {
@@ -74,9 +116,10 @@ function sendVote(player, vote) {
 
 function displayVotes(votes) {
     const voteList = document.getElementById('vote-list');
+    document.getElementById('reset').style.display = 'block';
+    console.log("Quoicoubotes: ", votes);
     if (voteList) {
-        voteList.innerHTML = '';
-
+        voteList.style.display = 'hidden';
         votes.forEach(vote => {
             const cardContainer = document.createElement('div');
             cardContainer.className = 'col-3 text-center mb-3';
@@ -156,3 +199,55 @@ function hideVoteSelection() {
         actionsContainer.style.display = 'none';
     }
 }
+
+function showVoteSelection() {
+    const actionsContainer = document.getElementById('actions');
+    if (actionsContainer) {
+        actionsContainer.style.display = 'block';
+    }
+}
+
+function loadNextFeature(feature) {
+    const featureContainer = document.getElementById('feature-container'); 
+    const currentFeature = document.getElementById('current-feature');
+
+    if (featureContainer && currentFeature) {
+        currentFeature.textContent = feature
+            ? `Fonctionnalité en cours : ${feature.feature || feature.name}`
+            : "Toutes les fonctionnalités ont été votées.";
+    }
+}
+
+
+
+function displayFinalBacklog(backlog) {
+    const backlogContainer = document.getElementById('backlog-container');
+    if (backlogContainer) {
+        backlogContainer.innerHTML = "<h3>Backlog Final</h3>";
+
+        backlog.forEach(feature => {
+            const featureItem = document.createElement('p');
+            featureItem.textContent = `Feature : ${feature.feature || feature.name}, Priority : ${feature.priority || "Non définie"}`;
+            backlogContainer.appendChild(featureItem);
+        });
+    }
+}
+
+function restartVoteUI() {
+    const revealButton = document.getElementById('reveal');
+    if (revealButton) {
+        revealButton.disabled = true;
+        revealButton.classList.remove('btn-danger');
+        revealButton.classList.add('btn-secondary');
+    }
+    hideVotes(); 
+    showVoteSelection(); 
+    document.getElementById('reset').style.display = 'none';
+}
+function hideVotes() {
+    const voteList = document.getElementById('vote-list');
+    if (voteList) voteList.innerHTML = ''; 
+}
+
+
+

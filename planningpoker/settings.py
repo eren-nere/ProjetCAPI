@@ -131,11 +131,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ASGI_APPLICATION = 'planningpoker.asgi.application'
 
+# settings.py
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            'hosts': [('redis', 6379)],
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+            "capacity": 1000,  # Limite maximale pour chaque groupe
+            "expiry": 60,  # Temps d'expiration des messages en secondes
         },
     },
 }

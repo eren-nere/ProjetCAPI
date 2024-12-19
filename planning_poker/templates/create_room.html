@@ -8,35 +8,58 @@
 </head>
 <body>
 
-    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="card p-4 shadow-sm rounded">
-            <h1 class="text-center mb-4 text-primary">Créer une salle</h1>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card p-4 shadow-sm rounded" style="width: 100%; max-width: 600px;">
+        <h1 class="text-center mb-4 text-primary">Créer une salle</h1>
 
-            <form method="post">
-                {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
 
-                <div class="form-group">
-                    <label for="room_name">Nom de la salle :</label>
-                    <input type="text" id="room_name" name="room_name" class="form-control" required>
-                </div>
+            <div class="form-group">
+                <label for="room_name">Nom de la salle :</label>
+                <input type="text" id="room_name" name="room_name" class="form-control" required>
+            </div>
 
-                <div class="form-group">
-                    <label for="pseudo">Pseudo :</label>
-                    <input type="text" id="pseudo" name="pseudo" class="form-control" required>
-                </div>
+            <div class="form-group">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" id="pseudo" name="pseudo" class="form-control" required>
+            </div>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block">Créer la salle</button>
-            </form>
+            <div class="form-group">
+                <label for="mode">Mode de jeu :</label>
+                <select id="mode" name="mode" class="form-control" required>
+                    <option value="unanimity">Unanimité</option>
+                    <option value="absolute_majority">Majorité absolue</option>
+                </select>
+            </div>
 
-            {% if error %}
-                <p class="text-danger text-center mt-3">{{ error }}</p>
-            {% endif %}
-        </div>
+            <div class="form-group">
+                <label for="backlog">Backlog (JSON) :</label>
+                <textarea id="backlog" name="backlog" class="form-control" rows="6" placeholder='[{"feature": "Connexion utilisateur"}, {"feature": "Recherche avancée"}]' required></textarea>
+                <small class="form-text text-muted">
+                    Exemple de backlog JSON :<br>
+                    <code>
+                        [
+                            {"feature": "Connexion utilisateur"},
+                            {"feature": "Recherche avancée"},
+                            {"feature": "Ajout au panier"}
+                        ]
+                    </code>
+                </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Créer la salle</button>
+        </form>
+
+        {% if error %}
+            <p class="text-danger text-center mt-3">{{ error }}</p>
+        {% endif %}
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
