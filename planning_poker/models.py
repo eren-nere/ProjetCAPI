@@ -1,22 +1,22 @@
 from django.db import models
 import json
 
+
 class PokerRoom(models.Model):
-    # Modele representant une salle de poker
     name = models.CharField(max_length=50, unique=True)
     creator = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(max_length=20, choices=[('unanimity', 'Unanimité'), ('absolute_majority', 'Majorité absolue')], default='unanimity')
-    backlog = models.TextField()  #stock  le backlog sous forme JSON
-    all_features = models.TextField(default="[]")  # stock toutes les fonctionnalité finales
+    backlog = models.TextField()
+    all_features = models.TextField(default="[]")
+
+
 
     def save(self, *args, **kwargs):
-        # Converti backlog en JSON si backlog est une liste
         if isinstance(self.backlog, list):
             self.backlog = json.dumps(self.backlog)
         super().save(*args, **kwargs)
 
-# Modele representant un joueur dans une room
 class Player(models.Model):
     """
     @brief Modèle représentant un joueur dans une room.

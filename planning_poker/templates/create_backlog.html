@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un Backlog</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .feature-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .feature-item input {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="/">Planning Poker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/poker/create/">Créer une salle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-backlog/">Créer un backlog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container main-container">
+        <div class="card shadow-sm">
+            <h1 class="text-center text-primary">Créer un Backlog</h1>
+            <form id="backlog-form">
+                <div class="form-group">
+                    <label for="feature-input">Nouvelle fonctionnalité :</label>
+                    <div class="feature-item">
+                        <input type="text" id="feature-input" class="form-control" placeholder="Exemple : Connexion utilisateur">
+                        <button type="button" id="add-feature" class="btn btn-primary ml-2">Ajouter</button>
+                    </div>
+                </div>
+
+                <div id="features-list" class="mb-4">
+                    <!-- Les fonctionnalités ajoutées s'afficheront ici -->
+                </div>
+
+                <div class="form-group">
+                    <label for="backlog-output">Backlog généré :</label>
+                    <textarea id="backlog-output" class="form-control" rows="6" readonly></textarea>
+                </div>
+
+                <button type="button" id="generate-backlog" class="btn btn-success btn-block">Générer le Backlog JSON</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const features = [];
+            const featureInput = document.getElementById("feature-input");
+            const featuresList = document.getElementById("features-list");
+            const backlogOutput = document.getElementById("backlog-output");
+            const addFeatureButton = document.getElementById("add-feature");
+            const generateBacklogButton = document.getElementById("generate-backlog");
+
+            // Fonction pour ajouter une fonctionnalité à la liste
+            const addFeature = () => {
+                const featureName = featureInput.value.trim();
+                if (featureName === "") {
+                    alert("Veuillez entrer une fonctionnalité valide !");
+                    return;
+                }
+
+                features.push({ feature: featureName });
+                featureInput.value = "";
+
+                // Met à jour l'affichage de la liste des fonctionnalités
+                updateFeaturesList();
+            };
+
+            // Fonction pour mettre à jour l'affichage des fonctionnalités
+            const updateFeaturesList = () => {
+                featuresList.innerHTML = "";
+                features.forEach((feature, index) => {
+                    const featureItem = document.createElement("div");
+                    featureItem.className = "feature-item";
+
+                    const featureText = document.createElement("span");
+                    featureText.textContent = feature.feature;
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.className = "btn btn-danger btn-sm";
+                    deleteButton.textContent = "Supprimer";
+                    deleteButton.addEventListener("click", () => {
+                        features.splice(index, 1);
+                        updateFeaturesList();
+                    });
+
+                    featureItem.appendChild(featureText);
+                    featureItem.appendChild(deleteButton);
+                    featuresList.appendChild(featureItem);
+                });
+            };
+
+            // Fonction pour générer le JSON du backlog
+            const generateBacklog = () => {
+                const backlog = { backlog: features };
+                backlogOutput.value = JSON.stringify(backlog, null, 2);
+            };
+
+            // Gestion des événements
+            addFeatureButton.addEventListener("click", addFeature);
+            generateBacklogButton.addEventListener("click", generateBacklog);
+        });
+        document.getElementById("generate-backlog").addEventListener("click", async () => {
+    const backlog = { backlog: features };
+    backlogOutput.value = JSON.stringify(backlog, null, 2);
+
+    // Envoi du JSON pour validation au serveur
+    try {
+        const response = await fetch("/validate-backlog/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(backlog),
+        });
+        const result = await response.json();
+        alert(result.message);
+    } catch (error) {
+        console.error("Erreur lors de la validation :", error);
+        alert("Une erreur est survenue lors de la validation.");
+    }
+});
+
+    </script>
+</body>
+</html>

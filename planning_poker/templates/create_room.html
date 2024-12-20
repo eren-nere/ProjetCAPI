@@ -7,7 +7,27 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="/">Planning Poker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/poker/create/">Créer une salle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-backlog/">Créer un backlog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
     <div class="card p-4 shadow-sm rounded" style="width: 100%; max-width: 600px;">
         <h1 class="text-center mb-4 text-primary">Créer une salle</h1>
@@ -34,16 +54,12 @@
             </div>
 
             <div class="form-group">
-                <label for="backlog">Backlog (JSON) :</label>
-                <textarea id="backlog" name="backlog" class="form-control" rows="6" placeholder='[{"feature": "Connexion utilisateur"}, {"feature": "Recherche avancée"}]' required></textarea>
+                <label for="backlog">Backlog en JSON (Si vous avez utilisé le mode café, vous pouvez mettre le JSON qui vous a été retourné) :</label>
+                <textarea id="backlog" name="backlog" class="form-control" rows="6" placeholder='{"backlog": [{"feature": "Connexion utilisateur"}, {"feature": "Recherche avancée"}, {"feature": "Ajout au panier"}]}' required></textarea>
                 <small class="form-text text-muted">
                     Exemple de backlog JSON :<br>
                     <code>
-                        [
-                            {"feature": "Connexion utilisateur"},
-                            {"feature": "Recherche avancée"},
-                            {"feature": "Ajout au panier"}
-                        ]
+                        {"backlog": [{"feature": "Connexion utilisateur"}, {"feature": "Recherche avancée"}, {"feature": "Ajout au panier"}]}
                     </code>
                 </small>
             </div>

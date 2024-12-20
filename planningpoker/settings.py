@@ -133,8 +133,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ASGI_APPLICATION = 'planningpoker.asgi.application'
 
-# settings.py
-
 if 'test' in sys.argv:
     CHANNEL_LAYERS = {
         "default": {
@@ -144,9 +142,9 @@ if 'test' in sys.argv:
 else:
     CHANNEL_LAYERS = {
         "default": {
-            "BACKEND": "channels.layers.RabbitmqChannelLayer",
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
             "CONFIG": {
-                "hosts": [("localhost", 5672)],
+                "hosts": [("localhost", 6379)],
             },
         },
     }

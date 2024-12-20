@@ -13,11 +13,32 @@
     </style>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="/">Planning Poker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/poker/create/">Créer une salle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-backlog/">Créer un backlog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="text-center p-5 shadow-sm rounded bg-white">
             <h1 class="display-4 text-primary mb-4">Planning Poker</h1>
             <a href="/poker/create/" class="btn btn-primary btn-lg">Créer une salle</a>
+            <a href="/create-backlog/" class="btn btn-primary btn-lg">Créer un backlog</a>
         </div>
     </div>
 

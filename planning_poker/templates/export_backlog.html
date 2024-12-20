@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Final Backlog</title>
+    <title>Export JSON - Carte Café</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -57,10 +57,27 @@
 </nav>
     <div class="container main-container">
         <div class="card shadow-sm">
-            <h1 class="text-center text-primary">Final Backlog</h1>
-            <pre>{{ final_backlog|safe }}</pre>
+            <h1 class="text-center text-primary">Export JSON - Carte Café</h1>
+            <pre id="json-output">{{ export_data|safe }}</pre>
+            <div class="text-center mt-4">
+                <button id="download-json" class="btn btn-primary">Télécharger le JSON</button>
+            </div>
         </div>
     </div>
+    <script>
+        document.getElementById('download-json').addEventListener('click', () => {
+            const data = document.getElementById('json-output').textContent;
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "cafe_backlog.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

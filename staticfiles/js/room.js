@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const creator = userInfoElement.getAttribute('data-creator');
 
     const revealButton = document.getElementById('reveal');
-    const notVotedList = document.getElementById('not-voted-list'); // Correctement défini
-    const featureContainer = document.getElementById('feature-container'); // Correctement défini
-    const currentFeature = document.getElementById('current-feature'); // Correctement défini
-    const resetButton = document.getElementById('reset'); // Correctement défini
+    const notVotedList = document.getElementById('not-voted-list'); 
+    const featureContainer = document.getElementById('feature-container'); 
+    const currentFeature = document.getElementById('current-feature'); 
+    const resetButton = document.getElementById('reset'); 
 
     if (pseudo === creator && revealButton) {
         revealButton.style.display = 'block';
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         revealButton.addEventListener('click', () => {
             if (ws) {
                 ws.send(JSON.stringify({
-                    type: "reveal", // Le type correspond bien à ce que le serveur attend
+                    type: "reveal",
                 }));
             } else {
                 console.error("Websocket pas connecté.");
@@ -53,35 +53,53 @@ ws.onmessage = (event) => {
 
         case "reveal":
             console.log("Votes reçus :", data.votes);
+
             displayVotes(data.votes);
+
             if (data.unanimity) {
-                console.log("✅ Unanimité détectée. Passage à la prochaine fonctionnalité.");
-                alert("✅ Vote validé ! Passage à la prochaine fonctionnalité...");
+                console.log("✅ Passage à la prochaine fonctionnalité :", data.next_feature);
+                loadNextFeature(data.next_feature);
+                alert("✅ Passage à la prochaine fonctionnalité.");
                 hideVoteSelection();
                 clearNotVotedList();
-                loadNextFeature(data.feature);
-
             } else {
-                console.log("❌ Pas d'unanimité. Recommencer le vote.");
-                alert("❌ Vote non unanime... On revote pour cette fonctionnalité.");
+                console.log("❌ Condition non atteinte. On revote pour la fonctionnalité actuelle.");
+                alert("❌ Condition non atteinte. Revote pour cette fonctionnalité.");
                 restartVoteUI();
             }
             break;
+
+
+
+        case "final_backlog":
+            alert("🎉 Toutes les fonctionnalités ont été votées !");
+            console.log("Final backlog : ", data.final_backlog);
+
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                displayFinalBacklog(data.final_backlog);
+            }
+            break;
+
+
 
         case "not_voted_update":
             updateNotVotedList(data.not_voted);
             break;
 
         case "feature_update":
-            console.log("Feature en cours :", data.feature);
+            console.log("Prochaine fonctionnalité reçue :", data.feature);
             loadNextFeature(data.feature);
+            clearNotVotedList();
             break;
 
-        case "final_backlog":
-            alert("🎉 Toutes les fonctionnalités ont été votées !");
-            console.log("Final backlog : ", data.final_backlog);
+        case "redirect":
+            console.log("Redirection vers :", data.url);
             window.location.href = data.url;
             break;
+
+
 
         case "error":
             alert(`⚠️ Erreur : ${data.message}`);
@@ -145,7 +163,6 @@ function updateNotVotedList(notVotedPlayers) {
     const notVotedList = document.getElementById('not-voted-list');
     if (notVotedList) {
         notVotedList.innerHTML = '';
-
         notVotedPlayers.forEach(player => {
             const listItem = document.createElement('li');
             listItem.textContent = player;
@@ -154,6 +171,7 @@ function updateNotVotedList(notVotedPlayers) {
         });
     }
 }
+
 
 function clearNotVotedList() {
     const notVotedList = document.getElementById('not-voted-list');
@@ -187,8 +205,7 @@ function getCardImage(voteValue) {
         20: 'cartes_20.svg',
         40: 'cartes_40.svg',
         100: 'cartes_100.svg',
-        'Café': 'cartes_cafe.svg',
-        'Joker': 'cartes_interro.svg'
+        200: 'cartes_cafe.svg'
     };
     return basePath + (cardMap[voteValue]);
 }
@@ -208,30 +225,16 @@ function showVoteSelection() {
 }
 
 function loadNextFeature(feature) {
-    const featureContainer = document.getElementById('feature-container'); // Assure-toi que cet ID existe
-    const currentFeature = document.getElementById('current-feature'); // Assure-toi que cet ID existe
-
-    if (featureContainer && currentFeature) {
+    const currentFeature = document.getElementById('current-feature');
+    if (currentFeature) {
         currentFeature.textContent = feature
             ? `Fonctionnalité en cours : ${feature.feature || feature.name}`
             : "Toutes les fonctionnalités ont été votées.";
     }
+    console.log("Chargement de la nouvelle fonctionnalité :", feature);
 }
 
 
-
-function displayFinalBacklog(backlog) {
-    const backlogContainer = document.getElementById('backlog-container');
-    if (backlogContainer) {
-        backlogContainer.innerHTML = "<h3>Backlog Final</h3>";
-
-        backlog.forEach(feature => {
-            const featureItem = document.createElement('p');
-            featureItem.textContent = `Feature : ${feature.feature || feature.name}, Priority : ${feature.priority || "Non définie"}`;
-            backlogContainer.appendChild(featureItem);
-        });
-    }
-}
 
 function restartVoteUI() {
     const revealButton = document.getElementById('reveal');
@@ -240,14 +243,16 @@ function restartVoteUI() {
         revealButton.classList.remove('btn-danger');
         revealButton.classList.add('btn-secondary');
     }
-    hideVotes(); // Effacer les votes précédents affichés
-    showVoteSelection(); // Afficher les cartes de vote
+    hideVotes(); 
+    showVoteSelection(); 
     document.getElementById('reset').style.display = 'none';
 }
 function hideVotes() {
     const voteList = document.getElementById('vote-list');
-    if (voteList) voteList.innerHTML = ''; // Efface les votes affichés
+    if (voteList) voteList.innerHTML = ''; 
 }
 
-
-
+function displayFinalBacklog(backlog) {
+    const roomName = window.location.pathname.split('/')[2];
+    document.location.href = `/final_backlog/${roomName}/`;
+}

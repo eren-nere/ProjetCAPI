@@ -14,4 +14,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8999
 
-CMD ["daphne", "-b", "0.0.0.0", "-p", "8999", "planningpoker.asgi:application"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8999"]

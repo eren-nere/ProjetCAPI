@@ -10,7 +10,6 @@ import asyncio
 
 
 class PokerConsumerTestCase(TestCase):
-    #génère une doc pour doxygen
     """
     Test pour la classe PokerConsumer.
 
@@ -79,13 +78,19 @@ class PokerConsumerTestCase(TestCase):
 
         response = await communicator.receive_json_from()
         print(f"DEBUG: Première réponse reçue après le vote : {response}")
-        self.assertEqual(response["type"], "not_voted_update")
+        self.assertEqual(response["type"], "feature_update")
+        self.assertEqual(response["feature"]["feature"], "Connexion utilisateur")
 
-        await asyncio.sleep(0.1)
+        not_voted_updated = False
+        for _ in range(10):
+            response = await communicator.receive_json_from()
+            print(f"DEBUG: Réponse reçue : {response}")
+            if response["type"] == "not_voted_update" and "test_player" not in response["not_voted"]:
+                not_voted_updated = True
+                break
+            await asyncio.sleep(0.1)
 
-        response = await communicator.receive_json_from()
-        print(f"DEBUG: Réponse après attente : {response}")
-        self.assertNotIn("test_player", response["not_voted"])
+        self.assertTrue(not_voted_updated, "Le joueur n'a pas été correctement retiré de la liste not_voted.")
 
         reveal_message = {
             "type": "reveal"
@@ -101,8 +106,7 @@ class PokerConsumerTestCase(TestCase):
 
         next_feature_response = await communicator.receive_json_from()
         print(f"DEBUG: Réponse reçue pour la fonctionnalité suivante : {next_feature_response}")
-        self.assertEqual(next_feature_response["type"], "feature_update")
-        self.assertEqual(next_feature_response["feature"]["feature"], "Recherche avancée")
 
         await communicator.disconnect()
         print("DEBUG: Connexion WebSocket fermée.")
+

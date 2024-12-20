@@ -26,11 +26,35 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="/">Planning Poker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/poker/create/">Créer une salle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/create-backlog/">Créer un backlog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
     <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="card p-4 shadow-sm rounded" style="width: 100%; max-width: 800px;">
             <h1 class="text-center mb-4 text-primary">Salle : {{ room_name }}</h1>
             <h2 class="text-center mb-4">Bienvenue, {{ pseudo }} !</h2>
-
+            <div class="mt-4 text-center">
+                <button id="share-room" class="btn btn-primary btn-lg">Partager le lien de la salle</button>
+                <p id="share-message" class="mt-2 text-success" style="display: none;">Lien copié dans le presse-papiers !</p>
+            </div>
             <div id="user-info" data-pseudo="{{ pseudo }}" data-creator="{{ creator }}"></div>
 
             <div id="feature-container" class="mt-4">
@@ -38,8 +62,6 @@
             </div>
 
 
-
-            <!-- Zone de sélection des votes -->
             <div id="actions" class="text-center mt-4">
                 <div class="row justify-content-center">
                     <div id="card-vote-0" class="vote-card col-3 mb-3">
@@ -73,10 +95,7 @@
                         <img src="{% static 'images/cards/cartes_100.svg' %}" width="100" alt="Carte 100" onclick="sendVote('{{ pseudo }}', 100)" class="img-fluid">
                     </div>
                     <div id="card-cafe" class="vote-card col-3 mb-3">
-                        <img src="{% static 'images/cards/cartes_cafe.svg' %}" width="100" alt="Carte Café" onclick="sendVote('{{ pseudo }}', 'Café')" class="img-fluid">
-                    </div>
-                    <div id="card-joker" class="vote-card col-3 mb-3">
-                        <img src="{% static 'images/cards/cartes_interro.svg' %}" width="100" alt="Carte Joker" onclick="sendVote('{{ pseudo }}', 'Joker')" class="img-fluid">
+                        <img src="{% static 'images/cards/cartes_cafe.svg' %}" width="100" alt="Carte Café" onclick="sendVote('{{ pseudo }}', 200)" class="img-fluid">
                     </div>
                     {% if pseudo == creator %}
                         <button id="reveal" class="btn btn-danger btn-lg mt-3" style="display: none;">Révéler les votes</button>
@@ -84,28 +103,41 @@
                 </div>
             </div>
 
-            <!-- Liste des joueurs n'ayant pas voté -->
             <div class="mt-4">
                 <h5 class="text-muted">Joueurs n'ayant pas encore voté :</h5>
                 <ul id="not-voted-list" class="list-group">
-                    <!-- Liste générée dynamiquement -->
                 </ul>
             </div>
 
-            <!-- Liste des votes révélés -->
             <div id="votes" class="mt-4">
                 <h3 class="text-center">Votes révélés :</h3>
                 <div id="vote-list" class="row justify-content-center">
-                    <!-- Les votes révélés seront affichés ici -->
                 </div>
                 <button id="reset" class="btn btn-danger btn-lg mt-3" style="display: none;" onclick="restartVoteUI();">Réinitialiser les votes</button>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('share-room').addEventListener('click', () => {
+            const roomLink = `${window.location.origin}/poker/${'{{ room_name }}'}/join`;
+            navigator.clipboard.writeText(roomLink)
+                .then(() => {
+                    const shareMessage = document.getElementById('share-message');
+                    shareMessage.style.display = 'block';
+                    setTimeout(() => {
+                        shareMessage.style.display = 'none';
+                    }, 3000);
+                })
+                .catch((err) => {
+                    console.error('Erreur lors de la copie du lien :', err);
+                    alert("Impossible de copier le lien. Essayez manuellement.");
+                });
+        });
+    </script>
+
 </body>
 </html>

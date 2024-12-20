@@ -10,13 +10,10 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
     @param AsyncWebsocketConsumer: Classe de consommateur asynchrone.
     """
+
     async def connect(self):
         """
-        @brief Connexion au websocket.
-
-        @param self: Instance de la classe.
-
-        @return Rien.
+        @brief Connexion au WebSocket.
         """
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f"poker_{self.room_name}"
@@ -29,41 +26,42 @@ class PokerConsumer(AsyncWebsocketConsumer):
 
         print(f"DEBUG: Pseudo détecté dans la session : {self.pseudo}")
 
-        await self.channel_layer.group_discard(
-            self.room_group_name,
-            self.channel_name
-        )
-
         try:
             self.room = await sync_to_async(PokerRoom.objects.get)(name=self.room_name)
-            await sync_to_async(Player.objects.filter(room=self.room, vote=None).delete)()
+
+            player, created = await sync_to_async(Player.objects.get_or_create)(
+                room=self.room,
+                name=self.pseudo,
+                defaults={'vote': None}
+            )
+            if not created and player.vote is not None:
+                player.vote = None
+                await sync_to_async(player.save)()
+
+            await self.channel_layer.group_add(
+                self.room_group_name,
+                self.channel_name
+            )
+            await self.accept()
+
+            not_voted = await self.get_not_voted_players()
+            await self.channel_layer.group_send(
+                self.room_group_name,
+                {"type": "not_voted_update", "not_voted": not_voted}
+            )
+
+            backlog = json.loads(self.room.backlog) if self.room.backlog else []
+            current_feature = backlog[0] if backlog else None
+            if current_feature:
+                await self.send(text_data=json.dumps({
+                    "type": "feature_update",
+                    "feature": current_feature
+                }))
+
+            print(f"DEBUG: Nouveau joueur connecté : {self.pseudo} dans {self.room_group_name}")
         except PokerRoom.DoesNotExist:
             await self.close()
             return
-
-        player, created = await sync_to_async(Player.objects.get_or_create)(
-            room=self.room,
-            name=self.pseudo,
-            defaults={'vote': None}
-        )
-        if not created and player.vote is not None:
-            player.vote = None
-            await sync_to_async(player.save)()
-
-        await self.channel_layer.group_add(
-            self.room_group_name,
-            self.channel_name
-        )
-        await self.accept()
-
-        if self.pseudo == self.room.creator:
-            await self.start_feature_voting()
-
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {"type": "not_voted_update", "not_voted": await self.get_not_voted_players()}
-        )
-        print(f"DEBUG: Nouveau channel connecté {self.channel_name} au groupe {self.room_group_name}")
 
     async def disconnect(self, close_code):
         """
@@ -95,7 +93,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
         if data['type'] == 'vote':
             await self.handle_vote(data)
         elif data['type'] == 'reveal':
-            print("DEBUG: Appel à reveal_votes")  # Log pour vérifier l'appel
+            print("DEBUG: Appel à reveal_votes")
             await self.reveal_votes(data)
         elif data['type'] == 'start_feature':
             await self.start_feature_voting()
@@ -136,14 +134,22 @@ class PokerConsumer(AsyncWebsocketConsumer):
                 "not_voted": not_voted,
             }
         )
+
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                "type": "not_voted_update",
+                "not_voted": not_voted,
+            }
+        )
+
         print(f"DEBUG: Player {player.name} voted {player.vote}. All voted: {all_voted}")
 
     async def reveal_votes(self, event=None):
         """
-        @brief Révèle les votes des joueurs et détermine si l'unanimité est atteinte.
+        Révèle les votes des joueurs et détermine si la condition (majorité ou unanimité) est atteinte.
 
         @param self: Instance de la classe.
-
         @param event: Événement.
 
         @return Rien.
@@ -156,15 +162,35 @@ class PokerConsumer(AsyncWebsocketConsumer):
             return
 
         vote_values = [vote["vote"] for vote in votes]
-        unanimity = len(set(vote_values)) == 1
+        mode = self.room.mode
 
-        print(f"DEBUG: Votes: {votes}, Unanimité: {unanimity}")
+        if mode == 'unanimity':
+            condition_met = len(set(vote_values)) == 1
+        elif mode == 'absolute_majority':
+            if len(vote_values) == 1:
+                condition_met = True
+            else:
+                condition_met = any(vote_values.count(v) > len(vote_values) / 2 for v in set(vote_values))
+        else:
+            condition_met = False
 
-        backlog = json.loads(self.room.backlog)
+        print(f"DEBUG: Votes: {votes}, Condition atteinte: {condition_met}")
+
+        backlog = json.loads(self.room.backlog) if self.room.backlog else []
         all_features = json.loads(self.room.all_features) if self.room.all_features else []
 
-        if unanimity:
-            if len(backlog) > 0:
+        if condition_met:
+            if vote_values[0] == "200":
+                await self.channel_layer.group_send(
+                    self.room_group_name,
+                    {
+                        "type": "redirect",
+                        "url": f"/export/{self.room_name}/",
+                    }
+                )
+                return
+
+            if backlog:
                 current_feature = backlog.pop(0)
                 current_feature["priority"] = vote_values[0]
                 all_features.append(current_feature)
@@ -173,64 +199,67 @@ class PokerConsumer(AsyncWebsocketConsumer):
                 self.room.all_features = json.dumps(all_features)
                 await sync_to_async(self.room.save)()
 
-                next_feature = backlog[0] if backlog else False
+                next_feature = backlog[0] if backlog else None
                 await self.reset_votes()
-                if not next_feature:
-                    await self.channel_layer.group_send(
-                        self.room_group_name,
-                        {
-                            "type": "final_backlog",
-                            "url": "/final_backlog/" + self.room_name + "/",
-                        }
-                    )
+
                 await self.channel_layer.group_send(
                     self.room_group_name,
                     {
                         "type": "reveal",
                         "votes": votes,
                         "unanimity": True,
-                        "next_feature": next_feature,
                     }
                 )
-                if next_feature:
-                    await self.channel_layer.group_send(
-                        self.room_group_name,
-                        {"type": "feature_update", "feature": next_feature}
-                    )
-
-
-                print(f"DEBUG: Unanimité atteinte. Prochaine feature : {next_feature}")
-            else:
-                print("DEBUG: Backlog vide, fin des votes.")
                 await self.channel_layer.group_send(
                     self.room_group_name,
                     {
-                        "type": "final_backlog",
-                        "final_backlog": all_features,
+                        "type": "not_voted_update",
+                        "not_voted": await self.get_not_voted_players(),
                     }
                 )
+
+                if next_feature:
+                    await self.channel_layer.group_send(
+                        self.room_group_name,
+                        {
+                            "type": "feature_update",
+                            "feature": next_feature,
+                        }
+                    )
+                else:
+                    await self.channel_layer.group_send(
+                        self.room_group_name,
+                        {
+                            "type": "final_backlog",
+                            "final_backlog": all_features,
+                        }
+                    )
         else:
-            print("DEBUG: Pas d'unanimité. Recommencer le vote.")
             await self.reset_votes()
+
+            await self.channel_layer.group_send(
+                self.room_group_name,
+                {
+                    "type": "not_voted_update",
+                    "not_voted": await self.get_not_voted_players(),
+                }
+            )
+
             await self.channel_layer.group_send(
                 self.room_group_name,
                 {
                     "type": "reveal",
                     "votes": votes,
                     "unanimity": False,
-
+                    "next_feature": backlog[0],
                 }
             )
 
     async def start_feature_voting(self):
         """
         @brief Démarre le vote pour la première fonctionnalité du backlog.
-
-        @param self: Instance de la classe.
-
-        @return Rien.
         """
-        backlog = json.loads(self.room.backlog)
+        backlog = json.loads(self.room.backlog) if self.room.backlog else []
         if backlog:
             current_feature = backlog[0]
             print(f"DEBUG: Début du vote pour la feature : {current_feature}")
@@ -244,6 +273,7 @@ class PokerConsumer(AsyncWebsocketConsumer):
                 self.room_group_name,
                 {"type": "final_backlog", "final_backlog": []}
             )
+
 
     async def player_vote(self, event):
         """
@@ -310,12 +340,9 @@ class PokerConsumer(AsyncWebsocketConsumer):
         """
         @brief Récupère les joueurs qui n'ont pas encore voté.
 
-        @param self: Instance de la classe.
-
-        @return Liste des joueurs sans vote.
+        @return Liste des noms des joueurs sans vote.
         """
         players = await sync_to_async(list)(Player.objects.filter(room=self.room))
-        print(f"DEBUG: Votes actuels des joueurs : {[{'name': p.name, 'vote': p.vote} for p in players]}")
         return [player.name for player in players if player.vote is None]
 
     async def final_backlog(self, event):
@@ -360,3 +387,17 @@ class PokerConsumer(AsyncWebsocketConsumer):
             "unanimity": event.get("unanimity"),
         }))
         print("DEBUG: Révélation des votes envoyée.")
+
+    async def redirect(self, event):
+        """
+        @brief Redirige tous les joueurs vers la page d'exportation JSON.
+
+        @param self: Instance de la classe.
+        @param event: Événement contenant l'URL de redirection.
+
+        @return Rien.
+        """
+        await self.send(text_data=json.dumps({
+            "type": "redirect",
+            "url": event["url"],
+        }))
