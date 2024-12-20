@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['views_2epy_0',['views.py',['../views_8py.html',1,'']]],
-  ['vote_1',['vote',['../classplanning__poker_1_1models_1_1Player.html#abe77b5761d760a3eddd34c6fde4cdfec',1,'planning_poker::models::Player']]]
+  ['urlpatterns_0',['urlpatterns',['../namespaceplanning__poker_1_1urls.html#a09a5077ea45e9dd1aabaacf181293f8e',1,'planning_poker.urls.urlpatterns'],['../namespaceplanningpoker_1_1urls.html#a2d981954aa4b05988aea9963326068b2',1,'planningpoker.urls.urlpatterns']]],
+  ['urls_2epy_1',['urls.py',['../planning__poker_2urls_8py.html',1,'(Global Namespace)'],['../planningpoker_2urls_8py.html',1,'(Global Namespace)']]],
+  ['use_5fi18n_2',['USE_I18N',['../namespaceplanningpoker_1_1settings.html#a8c1891fe7d5c3d4e6e5e1aae114afe0b',1,'planningpoker::settings']]],
+  ['use_5ftz_3',['USE_TZ',['../namespaceplanningpoker_1_1settings.html#a9c646d75ba2bae06a35959290c80c907',1,'planningpoker::settings']]]
 ];

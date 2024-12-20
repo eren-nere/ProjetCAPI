@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['save_0',['save',['../classplanning__poker_1_1models_1_1PokerRoom.html#a78cfdeee681be8dd0c4fc36c3f6def8f',1,'planning_poker::models::PokerRoom']]],
-  ['secret_5fkey_1',['SECRET_KEY',['../namespaceplanningpoker_1_1settings.html#a5eb979b059affae8e8ca7e32eb0d4806',1,'planningpoker::settings']]],
-  ['settings_2epy_2',['settings.py',['../settings_8py.html',1,'']]],
-  ['setup_3',['setUp',['../classplanning__poker_1_1tests_1_1test__consumers_1_1PokerConsumerTestCase.html#aeff62ea5df3cdfd645d4c4849632cf0d',1,'planning_poker::tests::test_consumers::PokerConsumerTestCase']]],
-  ['start_5ffeature_5fvoting_4',['start_feature_voting',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a49e95bd8b5808ceb21746abde6a5f2b3',1,'planning_poker::consumers::PokerConsumer']]],
-  ['static_5froot_5',['STATIC_ROOT',['../namespaceplanningpoker_1_1settings.html#a76ffa8872b1bcb9f58fbd4cf697d5458',1,'planningpoker::settings']]],
-  ['static_5furl_6',['STATIC_URL',['../namespaceplanningpoker_1_1settings.html#ae89ede8cf56fbf72357a2162e9e9df30',1,'planningpoker::settings']]],
-  ['staticfiles_5fdirs_7',['STATICFILES_DIRS',['../namespaceplanningpoker_1_1settings.html#aa991edbf62250bfaeef5f32579942b18',1,'planningpoker::settings']]],
-  ['strip_5fexample_8',['strip_example',['../namespacestrip__example.html',1,'']]],
-  ['strip_5fexample_2epy_9',['strip_example.py',['../strip__example_8py.html',1,'']]]
+  ['receive_0',['receive',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a6a4f265cc5e8e06fb3c86e8999d4e393',1,'planning_poker::consumers::PokerConsumer']]],
+  ['redirect_1',['redirect',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#ae444510e1828e2132467d4c151da3320',1,'planning_poker::consumers::PokerConsumer']]],
+  ['reset_5fvotes_2',['reset_votes',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#adaa33bd2ea786d7ee6bcbcd41c870ed3',1,'planning_poker::consumers::PokerConsumer']]],
+  ['reveal_3',['reveal',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a6ef1a4c61920fff15fe8591f5d5430e9',1,'planning_poker::consumers::PokerConsumer']]],
+  ['reveal_5fvotes_4',['reveal_votes',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a6b4ec96b0b1df0718f6d0410147070e7',1,'planning_poker::consumers::PokerConsumer']]],
+  ['room_5',['room',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a892596912f0763f036eda4a873e80589',1,'planning_poker.consumers.PokerConsumer.room'],['../classplanning__poker_1_1models_1_1Player.html#a966d2de0e1561d3c37a99be3d5763ca4',1,'planning_poker.models.Player.room'],['../classplanning__poker_1_1tests_1_1test__consumers_1_1PokerConsumerTestCase.html#ab6febda174a530c43230a584a478c77f',1,'planning_poker.tests.test_consumers.PokerConsumerTestCase.room'],['../namespaceplanning__poker_1_1views.html#a9423ae6fc1a9f7006c06b36624d4a787',1,'planning_poker.views.room()']]],
+  ['room_5fgroup_5fname_6',['room_group_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a345013d38c16009be2095b73e898519c',1,'planning_poker::consumers::PokerConsumer']]],
+  ['room_5fname_7',['room_name',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#ac524a03fbc92a45a79ab498201a9069d',1,'planning_poker::consumers::PokerConsumer']]],
+  ['root_5furlconf_8',['ROOT_URLCONF',['../namespaceplanningpoker_1_1settings.html#ae734cd239c571cf12f081c9243477204',1,'planningpoker::settings']]],
+  ['routing_2epy_9',['routing.py',['../routing_8py.html',1,'']]],
+  ['runasgi_2epy_10',['runasgi.py',['../runasgi_8py.html',1,'']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['websocket_5furlpatterns_0',['websocket_urlpatterns',['../namespaceplanning__poker_1_1routing.html#a88a0af0920cc6141e2e0c720f5a468fd',1,'planning_poker::routing']]],
-  ['wsgi_2epy_1',['wsgi.py',['../wsgi_8py.html',1,'']]],
-  ['wsgi_5fapplication_2',['WSGI_APPLICATION',['../namespaceplanningpoker_1_1settings.html#a2008f257534eb7f9f8057a9c2d7789a0',1,'planningpoker::settings']]]
+  ['validate_5fbacklog_5fview_0',['validate_backlog_view',['../namespaceplanning__poker_1_1views.html#acff3c33850c3a0a933424ce3ab7c6553',1,'planning_poker::views']]],
+  ['views_2epy_1',['views.py',['../views_8py.html',1,'']]],
+  ['vote_2',['vote',['../classplanning__poker_1_1models_1_1Player.html#abe77b5761d760a3eddd34c6fde4cdfec',1,'planning_poker::models::Player']]]
 ];

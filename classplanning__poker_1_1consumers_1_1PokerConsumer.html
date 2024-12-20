@@ -130,6 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab296404b67ccdcfb2158abdd00d890fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ef1a4c61920fff15fe8591f5d5430e9" id="r_a6ef1a4c61920fff15fe8591f5d5430e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ef1a4c61920fff15fe8591f5d5430e9">reveal</a> (self, event)</td></tr>
 <tr class="separator:a6ef1a4c61920fff15fe8591f5d5430e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae444510e1828e2132467d4c151da3320" id="r_ae444510e1828e2132467d4c151da3320"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae444510e1828e2132467d4c151da3320">redirect</a> (self, event)</td></tr>
+<tr class="separator:ae444510e1828e2132467d4c151da3320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -161,11 +163,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Connexion au websocket.
-
-@param self: Instance de la classe.
-
-@return Rien.
+<pre class="fragment">@brief Connexion au WebSocket.
 </pre> 
 </div>
 </div>
@@ -269,9 +267,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">@brief Récupère les joueurs qui n'ont pas encore voté.
 
-@param self: Instance de la classe.
-
-@return Liste des joueurs sans vote.
+@return Liste des noms des joueurs sans vote.
 </pre> 
 </div>
 </div>
@@ -387,6 +383,33 @@ Public Attributes</h2></td></tr>
 </pre> 
 </div>
 </div>
+<a id="ae444510e1828e2132467d4c151da3320" name="ae444510e1828e2132467d4c151da3320"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae444510e1828e2132467d4c151da3320">&#9670;&#160;</a></span>redirect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.consumers.PokerConsumer.redirect </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">@brief Redirige tous les joueurs vers la page d'exportation JSON.
+
+@param self: Instance de la classe.
+@param event: Événement contenant l'URL de redirection.
+
+@return Rien.
+</pre> 
+</div>
+</div>
 <a id="adaa33bd2ea786d7ee6bcbcd41c870ed3" name="adaa33bd2ea786d7ee6bcbcd41c870ed3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adaa33bd2ea786d7ee6bcbcd41c870ed3">&#9670;&#160;</a></span>reset_votes()</h2>
 
@@ -455,10 +478,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Révèle les votes des joueurs et détermine si l'unanimité est atteinte.
+<pre class="fragment">Révèle les votes des joueurs et détermine si la condition (majorité ou unanimité) est atteinte.
 
 @param self: Instance de la classe.
-
 @param event: Événement.
 
 @return Rien.
@@ -480,10 +502,6 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <pre class="fragment">@brief Démarre le vote pour la première fonctionnalité du backlog.
-
-@param self: Instance de la classe.
-
-@return Rien.
 </pre> 
 </div>
 </div>

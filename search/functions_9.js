@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['player_5fvote_0',['player_vote',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#af1e95b011ef222e70dff918156c048a0',1,'planning_poker::consumers::PokerConsumer']]],
-  ['pymethod_1',['PyMethod',['../classdocstring_1_1PyClass.html#a7229b3c16b9da8f8d8eb44d5876efc32',1,'docstring.PyClass.PyMethod()'],['../classpyexample_1_1PyClass.html#a127808f42ff7c534f1b89ec630f14139',1,'pyexample.PyClass.PyMethod()']]]
+  ['not_5fvoted_5fupdate_0',['not_voted_update',['../classplanning__poker_1_1consumers_1_1PokerConsumer.html#a0b0e70c78a1e1b3b6ec5d1dfb1f8b50e',1,'planning_poker::consumers::PokerConsumer']]]
 ];

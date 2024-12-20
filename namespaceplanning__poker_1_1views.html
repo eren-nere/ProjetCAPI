@@ -107,6 +107,12 @@ Functions</h2></td></tr>
 <tr class="separator:a9423ae6fc1a9f7006c06b36624d4a787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae72c245ea736cf53d50ab704db7f8028" id="r_ae72c245ea736cf53d50ab704db7f8028"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae72c245ea736cf53d50ab704db7f8028">final_backlog_view</a> (request, room_name)</td></tr>
 <tr class="separator:ae72c245ea736cf53d50ab704db7f8028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d40d4345161dd2aaa0fb352f381c6ef" id="r_a1d40d4345161dd2aaa0fb352f381c6ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d40d4345161dd2aaa0fb352f381c6ef">export_backlog</a> (request, room_name)</td></tr>
+<tr class="separator:a1d40d4345161dd2aaa0fb352f381c6ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b90c6ecf6a6a02f85b724df7e843dbb" id="r_a3b90c6ecf6a6a02f85b724df7e843dbb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b90c6ecf6a6a02f85b724df7e843dbb">create_backlog_view</a> (request)</td></tr>
+<tr class="separator:a3b90c6ecf6a6a02f85b724df7e843dbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acff3c33850c3a0a933424ce3ab7c6553" id="r_acff3c33850c3a0a933424ce3ab7c6553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acff3c33850c3a0a933424ce3ab7c6553">validate_backlog_view</a> (request)</td></tr>
+<tr class="separator:acff3c33850c3a0a933424ce3ab7c6553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -114,6 +120,28 @@ Variables</h2></td></tr>
 <tr class="separator:a91c5606fd961a532b52784284c2ef56d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a3b90c6ecf6a6a02f85b724df7e843dbb" name="a3b90c6ecf6a6a02f85b724df7e843dbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b90c6ecf6a6a02f85b724df7e843dbb">&#9670;&#160;</a></span>create_backlog_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.views.create_backlog_view </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">@brief Affiche la page de création de backlog.
+
+@param request: Objet de requête HTTP.
+
+@return Rend la page HTML de création de backlog.
+</pre> 
+</div>
+</div>
 <a id="aecd3376354f92e1c8faeafc593eb3b7b" name="aecd3376354f92e1c8faeafc593eb3b7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aecd3376354f92e1c8faeafc593eb3b7b">&#9670;&#160;</a></span>create_room()</h2>
 
@@ -128,11 +156,38 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">@brief Permet a un utilisateur de creer une room.
+<pre class="fragment">@brief Permet à un utilisateur de créer une room.
 
 @param request L'objet HTTP.
 
 @return Rend la template 'create_room.html' ou redirige vers la room.
+</pre> 
+</div>
+</div>
+<a id="a1d40d4345161dd2aaa0fb352f381c6ef" name="a1d40d4345161dd2aaa0fb352f381c6ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d40d4345161dd2aaa0fb352f381c6ef">&#9670;&#160;</a></span>export_backlog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.views.export_backlog </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>request</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>room_name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">@brief Exporte le backlog (fonctionnalités passées et à venir) au format JSON.
+
+@param request L'objet HTTP.
+@param room_name Le nom de la room.
+
+@return Rend la page 'export_backlog.html' avec le lien de téléchargement.
 </pre> 
 </div>
 </div>
@@ -234,8 +289,29 @@ Variables</h2></td></tr>
 @param request L'objet HTTP request.
 @param room_name est le nom de la room.
 
-
 @return Rend la template 'room.html'.
+</pre> 
+</div>
+</div>
+<a id="acff3c33850c3a0a933424ce3ab7c6553" name="acff3c33850c3a0a933424ce3ab7c6553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acff3c33850c3a0a933424ce3ab7c6553">&#9670;&#160;</a></span>validate_backlog_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">planning_poker.views.validate_backlog_view </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">@brief Valide le JSON généré par l'utilisateur.
+
+@param request: Objet de requête HTTP.
+
+@return Renvoie un message de validation ou d'erreur.
 </pre> 
 </div>
 </div>
