@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   planning_poker:
-    image: ghcr.io/eren-nere/planning-poker:latest # Remplacez par l'image publiée sur GHCR
+    image: ghcr.io/eren-nere/planning-poker:latest
     container_name: planning_poker
     build:
       context: .
