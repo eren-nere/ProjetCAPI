@@ -1,18 +1,24 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  web:
-    build: .
-    command: daphne -b 0.0.0.0 -p 8999 planningpoker.asgi:application
+  planning_poker:
+    image: ghcr.io/eren-nere/planning-poker:latest # Remplacez par l'image publiée sur GHCR
+    container_name: planning_poker
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "8999:8999"
-    volumes:
-      - .:/app
+      - "8000:8000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
     depends_on:
       - redis
 
   redis:
-    image: redis:7.2
+    image: redis:latest
+    container_name: redis
+    hostname: redis
     ports:
       - "6379:6379"
-
+    command: ["redis-server"]
