@@ -12,7 +12,7 @@ Un outil interactif pour la planification agile utilisant des cartes de poker.
 ### Étapes
 1. Clonez ce dépôt sur votre machine locale :
    ```bash
-   git clone https://github.com/<votre_utilisateur>/planning-poker.git
+   git clone https://github.com/eren-nere/planning-poker.git
    cd planning-poker
    ```
 
